@@ -1,0 +1,19 @@
+{
+  "name": "device-motion",
+  "version": "0.0.0",
+  "homepage": "https://github.com/DannyBlueDesign/angular-blueprint",
+  "authors": [
+    "Danny Blue <dblue@deloitte.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "polymer/Polymer#~1.0.3"
+  }
+}
