@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+    <script src="device-orientation.js"></script>
+</head>
+<body>
+<device-orientation id="orientationEl"></device-orientation>
+
+<p>Left Right: <span id="lr">0</span></p>
+
+<p>Left Right: <span id="fb">0</span></p>
+
+<p>Left Right: <span id="dir">0</span></p>
+
+<script>
+    var el = document.getElementById('orientationEl');
+    var lr = document.getElementById('lr');
+    var fb = document.getElementById('fb');
+    var dir = document.getElementById('dir');
+
+    el.orientationChanged = function () {
+        lr.innerText = round(el.getAttribute('lr'));
+        fb.innerText = round(el.getAttribute('fb'));
+        dir.innerText = round(el.getAttribute('dir'));
+    };
+
+    function round(val) {
+        return Math.round(parseInt(val, 10));
+    }
+</script>
+</body>
+</html>
