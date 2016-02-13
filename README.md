@@ -27,7 +27,7 @@ A Web Components for detecting device orientation. Can be used with or without P
     var fb = document.getElementById('fb');
     var direction = document.getElementById('direction');
     
-    el.attributeChanged = function () {
+    el.orientationChanged = function () {
         lr.innerText = el.lr;
         fb.innerText = el.fb;
         direction.innerText = el.direction;
