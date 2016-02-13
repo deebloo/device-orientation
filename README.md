@@ -19,14 +19,12 @@ A Web Components for detecting device orientation. listen on the element for the
     var lr = document.getElementById('lr');
     var fb = document.getElementById('fb');
     var dir = document.getElementById('dir');
+    
     el.attributeChanged = function () {
-        lr.innerText = round(el.lr);
-        fb.innerText = round(el.fb);
-        dir.innerText = round(el.dir);
+        lr.innerText = el.lr;
+        fb.innerText = el.fb;
+        dir.innerText = el.dir;
     };
-    function round(val) {
-      return Math.round(parseInt(val, 10));
-    }
 </script>
 ```
 
