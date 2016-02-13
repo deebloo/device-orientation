@@ -1,0 +1,45 @@
+<script>
+    Polymer({
+        is: 'device-orientation',
+        properties: {
+            lr: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            },
+            fb: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            },
+            dir: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            }
+        },
+        attributeChanged: function () {
+            var element = this;
+
+            this.fire('orientation-changed', {
+                lr : element.lr,
+                fb : element.fb,
+                dir: element.dir
+            });
+        },
+        ready: function () {
+            window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
+        },
+        detached: function () {
+            window.removeEventListener('deviceorientation', this.updateOrientation.bind(this))
+        },
+        updateOrientation: function (e) {
+            this.lr = e.gamma;
+            this.fb = e.beta;
+            this.dir = e.alpha;
+        }
+    });
+</script>

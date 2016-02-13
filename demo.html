@@ -2,7 +2,7 @@
 
 <dom-module id="demo-element">
   <template>
-    <device-orientation on-orientation-changed="changeHandler" round="false"></device-orientation>
+    <device-orientation on-orientation-changed="changeHandler"></device-orientation>
 
     <p>Left Right: <span>{{lr}}</span></p>
     <p>Forward Back: <span>{{fb}}</span></p>
@@ -28,9 +28,9 @@
       }
     },
     changeHandler: function(e, data) {
-      this.lr = data.lr;
-      this.fb = data.fb;
-      this.dir = data.dir;
+      this.lr = Math.round(data.lr);
+      this.fb = Math.round(data.fb);
+      this.dir = Math.round(data.dir);
     }
   });
 </script>
