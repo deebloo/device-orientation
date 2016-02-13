@@ -30,7 +30,7 @@
         }
     };
 
-    document.registerElement('device-orientation', {
+    window.deviceOrientationEl = document.registerElement('device-orientation', {
         prototype: doProto
     });
 })(document);
