@@ -1,6 +1,6 @@
 # ```<device-orientation>```
 
-A Web Components for detecting device orientation.
+A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.
 
 ```HTML
 <device-orientation></device-orientation>
@@ -8,6 +8,13 @@ A Web Components for detecting device orientation.
 
 ### Example
 ```HTML
+<!-- For Polymer -->
+<link rel="import" href="polymer/polymer.html">
+<link rel="import" href="device-orientation.html">
+
+<!-- For Vanilla -->
+<script src="device-orientation.js"></script>
+
 <device-orientation id="orientationEl"></device-orientation>
 
 <p>Left Right: <span id="lr">0</span></p>
