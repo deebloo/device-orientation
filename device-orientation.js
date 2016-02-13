@@ -1,25 +1,34 @@
 (function (document) {
     var doProto = Object.create(HTMLElement.prototype);
 
+    doProto.lr = 0;
+    doProto.fb = 0;
+    doProto.direction = 0;
+
     doProto.createdCallback = function () {
         this.setAttrs(0, 0, 0);
-
-        window.addEventListener('deviceorientation', function (e) {
-            this.setAttrs(e.gamma, e.beta, e.alpha);
-        }.bind(this));
+        window.addEventListener('deviceorientation', this.setAttrs.bind(this));
     };
 
-    doProto.setAttrs = function (lr, fb, dir) {
-        this.setAttribute('lr', lr);
-        this.setAttribute('fb', fb);
-        this.setAttribute('dir', dir);
+    doProto.detachedCallback = function () {
+        window.removeEventListener('deviceorientation', this.setAttrs.bind(this));
+    };
+
+    doProto.setAttrs = function (e) {
+        this.lr = e.gamma;
+        this.fb = e.beta;
+        this.direction = e.alpha;
+
+        this.setAttribute('lr', this.lr);
+        this.setAttribute('fb', this.fb);
+        this.setAttribute('dir', this.dir);
     };
 
     doProto.attributeChangedCallback = function () {
-        this.orientationChanged.apply(this, arguments);
+        if(this.orientationChanged) {
+            this.orientationChanged.apply(this, arguments);
+        }
     };
-
-    doProto.orientationChanged = function () {};
 
     document.registerElement('device-orientation', {
         prototype: doProto

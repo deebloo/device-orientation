@@ -14,7 +14,7 @@
                 notify: true,
                 value: 0
             },
-            dir: {
+            direction: {
                 type: Number,
                 reflectToAttribute: true,
                 notify: true,
@@ -27,10 +27,15 @@
         detached: function () {
             window.removeEventListener('deviceorientation', this.updateOrientation.bind(this))
         },
+        attributeChanged: function () {
+          if(this.orientationChanged) {
+              this.orientationChanged();
+          }
+        },
         updateOrientation: function (e) {
             this.lr = e.gamma;
             this.fb = e.beta;
-            this.dir = e.alpha;
+            this.direction = e.alpha;
         }
     });
 </script>

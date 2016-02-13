@@ -12,18 +12,18 @@ A Web Components for detecting device orientation.
 
 <p>Left Right: <span id="lr">0</span></p>
 <p>Left Right: <span id="fb">0</span></p>
-<p>Left Right: <span id="dir">0</span></p>
+<p>Left Right: <span id="direction">0</span></p>
 
 <script>
     var el = document.getElementById('orientationEl');
     var lr = document.getElementById('lr');
     var fb = document.getElementById('fb');
-    var dir = document.getElementById('dir');
+    var direction = document.getElementById('direction');
     
     el.attributeChanged = function () {
         lr.innerText = el.lr;
         fb.innerText = el.fb;
-        dir.innerText = el.dir;
+        direction.innerText = el.direction;
     };
 </script>
 ```
@@ -40,7 +40,7 @@ Type: Number
 
 front to back value
 
-#### dir
+#### direction
 Type: number
 
 direction value

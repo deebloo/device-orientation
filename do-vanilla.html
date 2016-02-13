@@ -19,18 +19,18 @@
 
 <p>Left Right: <span id="fb">0</span></p>
 
-<p>Left Right: <span id="dir">0</span></p>
+<p>Direction: <span id="direction">0</span></p>
 
 <script>
     var el = document.getElementById('orientationEl');
     var lr = document.getElementById('lr');
     var fb = document.getElementById('fb');
-    var dir = document.getElementById('dir');
+    var dir = document.getElementById('direction');
 
     el.orientationChanged = function () {
-        lr.innerText = round(el.getAttribute('lr'));
-        fb.innerText = round(el.getAttribute('fb'));
-        dir.innerText = round(el.getAttribute('dir'));
+        lr.innerText = round(el.lr);
+        fb.innerText = round(el.fb);
+        dir.innerText = round(el.direction);
     };
 
     function round(val) {
