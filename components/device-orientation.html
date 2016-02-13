@@ -1,82 +1,68 @@
-<link rel="import" href="../../polymer/polymer.html">
-
 <script>
-  /**
-   * @name device-orientation
-   */
-  Polymer({
-    is: 'device-orientation',
-    properties: {
-      round: {
-        type: Boolean,
-        value: true
-      },
-      lr: {
-        type: Number,
-        reflectToAttribute: true,
-        notify: true,
-        value: 0
-      },
-      fb: {
-        type: Number,
-        reflectToAttribute: true,
-        notify: true,
-        value: 0
-      },
-      dir: {
-        type: Number,
-        reflectToAttribute: true,
-        notify: true,
-        value: 0
-      }
-    },
-    attributeChanged: function() {
-      var element = this;
+    Polymer({
+        is: 'device-orientation',
+        properties: {
+            round: {
+                type : Boolean,
+                value: true
+            },
+            lr: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            },
+            fb: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            },
+            dir: {
+                type: Number,
+                reflectToAttribute: true,
+                notify: true,
+                value: 0
+            }
+        },
+        attributeChanged: function () {
+            var element = this;
 
-      this.fire('orientation-changed', {
-        lr: element.lr,
-        fb: element.fb,
-        dir: element.dir
-      });
-    },
-    ready: function() {
-      var el = this;
+            this.fire('orientation-changed', {
+                lr : element.lr,
+                fb : element.fb,
+                dir: element.dir
+            });
+        },
+        ready: function () {
+            var el = this;
 
-      if (window.DeviceOrientationEvent) {
+            if (window.DeviceOrientationEvent) {
 
-        window.addEventListener('deviceorientation', function deviceOrientationHandler(e) {
-          el.lr = _orientationVal(e.gamma, el.round);
+                window.addEventListener('deviceorientation', function deviceOrientationHandler(e) {
+                    el.lr = _orientationVal(e.gamma, el.round);
 
-          el.fb = _orientationVal(e.beta, el.round);
+                    el.fb = _orientationVal(e.beta, el.round);
 
-          el.dir = _orientationVal(e.alpha, el.round);
+                    el.dir = _orientationVal(e.alpha, el.round);
 
-        }, false);
+                }, false);
 
-      }
+            }
 
+        }
+    });
+
+    function _orientationVal(num, round) {
+        var value = 0;
+
+        if (round) {
+            value = Math.round(num);
+        }
+        else {
+            value = num;
+        }
+
+        return value;
     }
-  });
-
-  /**
-   * @name _orientationVal
-   *
-   * @param num
-   * @param round
-   * @return {number}
-   *
-   * @private
-   */
-  function _orientationVal(num, round) {
-    var value = 0;
-
-    if(round) {
-      value = Math.round(num);
-    }
-    else {
-      value = num;
-    }
-
-    return value;
-  }
 </script>
