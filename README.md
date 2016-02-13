@@ -1,6 +1,6 @@
 # ```<device-orientation>```
 
-A Web Components for detecting device orientation.
+A Web Components for detecting device orientation. listen on the element for the change event or take a look at th
 
 ```HTML
 <device-orientation round="false" on-orientation-changed="myChangeHandler"></device-orientation>

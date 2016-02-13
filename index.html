@@ -11,9 +11,30 @@
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
     <link rel="import" href="bower_components/polymer/polymer.html">
-    <link rel="import" href="demo.html">
+    <link rel="import" href="device-orientation.html">
 </head>
 <body>
-<demo-element></demo-element>
+<device-orientation id="orientationEl"></device-orientation>
+
+<p>Left Right: <span id="lr">0</span></p>
+<p>Left Right: <span id="fb">0</span></p>
+<p>Left Right: <span id="dir">0</span></p>
+
+<script>
+    var el = document.getElementById('orientationEl');
+    var lr = document.getElementById('lr');
+    var fb = document.getElementById('fb');
+    var dir = document.getElementById('dir');
+
+    el.attributeChanged = function () {
+        lr.innerText = round(el.lr);
+        fb.innerText = round(el.fb);
+        dir.innerText = round(el.dir);
+    };
+
+    function round(val) {
+      return Math.round(parseInt(val, 10));
+    }
+</script>
 </body>
 </html>

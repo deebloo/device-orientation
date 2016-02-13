@@ -21,15 +21,6 @@
                 value: 0
             }
         },
-        attributeChanged: function () {
-            var element = this;
-
-            this.fire('orientation-changed', {
-                lr : element.lr,
-                fb : element.fb,
-                dir: element.dir
-            });
-        },
         ready: function () {
             window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
         },
