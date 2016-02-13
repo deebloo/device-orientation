@@ -1,17 +1,13 @@
 <script>
-    Polymer({
+    var componentDef = {
         is: 'device-orientation',
         properties: {
-            round: {
-                type : Boolean,
-                value: true
-            },
             lr: {
                 type: Number,
-                reflectToAttribute: true,
-                notify: true,
-                value: 0
-            },
+                    reflectToAttribute: true,
+                    notify: true,
+                    value: 0
+                },
             fb: {
                 type: Number,
                 reflectToAttribute: true,
@@ -35,34 +31,31 @@
             });
         },
         ready: function () {
-            var el = this;
-
             if (window.DeviceOrientationEvent) {
-
-                window.addEventListener('deviceorientation', function deviceOrientationHandler(e) {
-                    el.lr = _orientationVal(e.gamma, el.round);
-
-                    el.fb = _orientationVal(e.beta, el.round);
-
-                    el.dir = _orientationVal(e.alpha, el.round);
-
-                }, false);
-
+                window.addEventListener('deviceorientation', _updateOrientation);
             }
-
+        },
+        detached: function () {
+            window.removeEventListener('deviceorientation', _updateOrientation)
         }
-    });
+    };
 
-    function _orientationVal(num, round) {
-        var value = 0;
+    Polymer(componentDef);
 
-        if (round) {
-            value = Math.round(num);
-        }
-        else {
-            value = num;
-        }
+    /**
+     * Update the attributes on element when the device changes
+     *
+     * @param {number} e.gamma - left right
+     * @param {number} e.beta - forward back
+     * @param {number} e.alpha - direction
+     *
+     * @private
+     */
+    function _updateOrientation(e) {
+        componentDef.lr = e.gamma;
 
-        return value;
+        componentDef.fb = e.beta;
+
+        componentDef.dir = e.alpha;
     }
 </script>
