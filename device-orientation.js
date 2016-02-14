@@ -1,8 +1,19 @@
-(function (document) {
+(function (name, definition) {
+    if (typeof exports === 'object') {
+        if (typeof module === 'object' && typeof module.exports === 'object') {
+            module.exports = definition();
+        }
+        exports[name] = definition();
+        return;
+    }
+    this[name] = definition();
+})('device-orientation', function () {
     var doProto = Object.create(HTMLElement.prototype);
 
     doProto.lr = 0;
+
     doProto.fb = 0;
+
     doProto.direction = 0;
 
     doProto.createdCallback = function () {
@@ -30,7 +41,7 @@
         }
     };
 
-    window.deviceOrientationEl = document.registerElement('device-orientation', {
+    return document.registerElement('device-orientation', {
         prototype: doProto
     });
-})(document);
+});
