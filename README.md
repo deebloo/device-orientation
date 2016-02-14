@@ -2,6 +2,14 @@
 
 A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.
 
+```
+npm i --save device-orientation
+
+or
+
+bower install --save device-orienation-component
+```
+
 ```HTML
 <device-orientation></device-orientation>
 ```
