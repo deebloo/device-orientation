@@ -10,13 +10,11 @@
 })('device-orientation', function () {
     var doProto = Object.create(HTMLElement.prototype);
 
-    doProto.lr = 0;
-
-    doProto.fb = 0;
-
-    doProto.direction = 0;
-
     doProto.createdCallback = function () {
+        this.lr = 0;
+        this.fb = 0;
+        this.direction = 0;
+
         this.setAttrs({
             gamma: 0,
             beta: 0,
