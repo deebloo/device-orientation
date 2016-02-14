@@ -17,7 +17,11 @@
     doProto.direction = 0;
 
     doProto.createdCallback = function () {
-        this.setAttrs(0, 0, 0);
+        this.setAttrs({
+            gamma: 0,
+            beta: 0,
+            alpha: 0
+        });
         window.addEventListener('deviceorientation', this.setAttrs.bind(this));
     };
 
