@@ -12,7 +12,7 @@ A Web Components for detecting device orientation. Can be used with or without P
 <link rel="import" href="polymer/polymer.html">
 <link rel="import" href="device-orientation.html">
 
-<!-- For Vanilla -->
+<!-- For Vanilla with no modules -->
 <script src="device-orientation.js"></script>
 
 <device-orientation id="orientationEl"></device-orientation>

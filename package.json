@@ -1,23 +1,29 @@
 {
   "name": "device-orientation",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.",
+  "main": "device-orientation.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node node_modules/polyserve/bin/polyserve -o"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/deebloo/device-orientation.git"
+    "url": "git+https://github.com/deebloo/device-orientation.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "deebloo",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/deebloo/device-orientation/issues"
   },
   "homepage": "https://github.com/deebloo/device-orientation",
   "devDependencies": {
     "polyserve": "^0.4.0"
-  }
+  },
+  "keywords": [
+    "device",
+    "orientation",
+    "web",
+    "components"
+  ]
 }
