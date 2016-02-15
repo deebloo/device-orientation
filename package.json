@@ -1,29 +1,31 @@
 {
-  "name": "device-orientation",
-  "version": "1.0.0",
-  "description": "A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.",
-  "main": "device-orientation.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node node_modules/polyserve/bin/polyserve -o"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/deebloo/device-orientation.git"
-  },
-  "author": "deebloo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/deebloo/device-orientation/issues"
-  },
-  "homepage": "https://github.com/deebloo/device-orientation",
-  "devDependencies": {
-    "polyserve": "^0.4.0"
-  },
-  "keywords": [
-    "device",
-    "orientation",
-    "web",
-    "components"
-  ]
+    "name": "device-orientation",
+    "version": "1.0.0",
+    "description": "A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.",
+    "main": "device-orientation.js",
+    "scripts": {
+        "test": "node node_modules/karma/bin/karma start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/deebloo/device-orientation.git"
+    },
+    "author": "deebloo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/deebloo/device-orientation/issues"
+    },
+    "homepage": "https://github.com/deebloo/device-orientation",
+    "devDependencies": {
+        "jasmine-core": "^2.4.1",
+        "karma": "^0.13.21",
+        "karma-chrome-launcher": "^0.2.2",
+        "karma-jasmine": "^0.3.7"
+    },
+    "keywords": [
+        "device",
+        "orientation",
+        "web",
+        "components"
+    ]
 }
