@@ -1,96 +1,89 @@
-(function () {
-    expose('createDeviceOrientation', register, factory);
-
-    /**
-     * Exposes the new component to the window or to a module
-     *
-     * @param {string} name - the factory name to expose
-     * @param {function} definition - the definition of your web component. registers to the document
-     * @param {function} factory - method for programmatically creating web component
-     */
-    function expose(name, definition, factory) {
-        var Component = definition();
-
-        if (typeof exports === 'object') {
-            if (typeof module === 'object' && typeof module.exports === 'object') {
-                module.exports = exposeFactory;
-            }
-
-            exports[name] = exposeFactory;
-
-            return exposeFactory;
-        }
-
-        this[name] = exposeFactory;
-
-        function exposeFactory(opts) {
-            return factory(Component, opts);
-        }
-
-        return exposeFactory;
+class DeviceOrientation extends HTMLElement {
+    static get is() {
+        return 'device-orientation';
     }
 
-    /**
-     * Create and register component with the document
-     */
-    function register() {
-        var doProto = Object.create(HTMLElement.prototype);
-
-        doProto.createdCallback = function () {
-            this.lr = 0;
-            this.fb = 0;
-            this.direction = 0;
-
-            this.setAttrs({
-                gamma: 0,
-                beta: 0,
-                alpha: 0
-            });
-            window.addEventListener('deviceorientation', this.setAttrs.bind(this));
-        };
-
-        doProto.detachedCallback = function () {
-            window.removeEventListener('deviceorientation', this.setAttrs.bind(this));
-        };
-
-        doProto.setAttrs = function (e) {
-            this.lr = e.gamma;
-            this.fb = e.beta;
-            this.direction = e.alpha;
-
-            this.setAttribute('lr', this.lr);
-            this.setAttribute('fb', this.fb);
-            this.setAttribute('direction', this.direction);
-        };
-
-        doProto.attributeChangedCallback = function () {
-            if(this.orientationChanged) {
-                this.orientationChanged.apply(this, arguments);
-            }
-        };
-
-        return document.registerElement('device-orientation', {
-            prototype: doProto
-        });
+    static get observedAttributes() {
+        return ['direction', 'fb', 'lr'];
     }
 
-    /**
-     * create a new instance of the registered component
-     *
-     * @param {function} Component - the registered component Constructor/class
-     * @param {object} options - a map of attributes to attach to the new component instance
-     *
-     * @return {*}
-     */
-    function factory(Component, options) {
-        var newEl = new Component();
+    constructor() {
+        super();
 
-        for(var option in options) {
-            if(options.hasOwnProperty(option)) {
-                newEl.setAttribute(option, options[option]);
+        this._setAttrs = this._setAttrs.bind(this);
+    }
+
+    connectedCallback() {
+        window.addEventListener('deviceorientation', this._setAttrs);
+    }
+
+    disconnectedCallback() {
+        window.removeEventListener('deviceorientation', this._setAttrs);
+    }
+
+    _setAttrs({ alpha, beta, gamma }) {
+        if (alpha === null && beta === null && gamma === null) return;
+
+        this.setAttribute('direction', alpha);
+        this.setAttribute('fb', beta);
+        this.setAttribute('lr', gamma);
+
+        this.dispatchEvent(new Event('orientationChanged'));
+    }
+
+    attributeChangedCallback(attrName, oldVal, newVal) {
+        if (newVal !== oldVal) {
+            switch (attrName) {
+                case 'direction':
+                    this.direction = newVal;
+                    break;
+                case 'fb':
+                    this.fb = newVal;
+                    break;
+                case 'lr':
+                    this.lr = newVal;
+                    break;
+                default:
+                    break;
             }
         }
-
-        return newEl;
     }
-})();
+
+    set direction(val) {
+        if (val) {
+            this.setAttribute('direction', val);
+        } else {
+            this.removeAttribute('direction');
+        }
+    }
+
+    get direction() {
+        return this.getAttribute('direction');
+    }
+
+    set fb(val) {
+        if (val) {
+            this.setAttribute('fb', val);
+        } else {
+            this.removeAttribute('fb');
+        }
+    }
+
+    get fb() {
+        return this.getAttribute('fb');
+    }
+
+    set lr(val) {
+        if (val) {
+            this.setAttribute('lr', val);
+        } else {
+            this.removeAttribute('lr');
+        }
+    }
+
+    get lr() {
+        return this.getAttribute('lr');
+    }
+}
+
+customElements.define(DeviceOrientation.is, DeviceOrientation);

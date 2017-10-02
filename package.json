@@ -1,10 +1,10 @@
 {
     "name": "device-orientation",
-    "version": "1.0.0",
-    "description": "A Web Components for detecting device orientation. Can be used with or without Polymer. Usage is exactly the same.",
+    "version": "2.0.0",
+    "description": "A Web Components for detecting device orientation..",
     "main": "device-orientation.js",
     "scripts": {
-        "test": "node node_modules/karma/bin/karma start"
+        "test": "karma start"
     },
     "repository": {
         "type": "git",
@@ -17,10 +17,10 @@
     },
     "homepage": "https://github.com/deebloo/device-orientation",
     "devDependencies": {
-        "jasmine-core": "^2.4.1",
-        "karma": "^0.13.21",
-        "karma-chrome-launcher": "^0.2.2",
-        "karma-jasmine": "^0.3.7"
+        "jasmine-core": "^2.8.0",
+        "karma": "^1.7.1",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-jasmine": "^1.1.0"
     },
     "keywords": [
         "device",

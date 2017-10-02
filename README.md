@@ -5,9 +5,6 @@ A Web Components for detecting device orientation. Can be used with or without P
 ```
 npm i --save device-orientation
 
-or
-
-bower install --save device-orienation-component
 ```
 
 ```HTML
@@ -16,10 +13,6 @@ bower install --save device-orienation-component
 
 ### Example
 ```HTML
-<!-- For Polymer -->
-<link rel="import" href="polymer/polymer.html">
-<link rel="import" href="device-orientation.html">
-
 <!-- For Vanilla with no modules -->
 <script src="device-orientation.js"></script>
 
@@ -34,7 +27,7 @@ bower install --save device-orienation-component
     var lr = document.getElementById('lr');
     var fb = document.getElementById('fb');
     var direction = document.getElementById('direction');
-    
+
     el.orientationChanged = function () {
         lr.innerText = el.lr;
         fb.innerText = el.fb;
